@@ -1,0 +1,26 @@
+{
+	"iRoot": "C:/workplace/calculateMRT/build/tempe",
+	"oRoot": "C:/workplace/calculateMRT/build/tempe_out",
+	"time": [
+		"2016-06-20T21:00+01:00",
+		"2016-06-20T23:00+01:00",
+		30
+	],
+	"measurements": {
+		"altitude":[355, 355, 355, 355, 355],
+		"airTemperature": [46.8, 46.8, 46.8, 46.8, 46.8],
+		"relativeHumidity": [6.0, 6.0, 6.0, 6.0, 6.0],
+		"windVelocity": [2.1, 2.1, 2.1, 2.1, 2.1],
+		"cloudCover": [0, 0, 0, 0, 0]
+	},
+	"subject": {
+		"height": 1.75,
+		"weight": 75,
+		"age": 35,
+		"male": 1,
+		"clothing": 0.9,
+		"activity": 80,
+		"standing": 1
+	},
+  "tiles": []
+}
