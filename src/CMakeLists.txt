@@ -5,7 +5,6 @@ file(GLOB hdrs
 	"date.h"
 	"fileio.h"
 	"mrtcalculator.h"
-	"petcalculator.h"
 	"vfcalculator.h"
 	"struct.h"
 	"./fisheye/*.h"
@@ -19,7 +18,6 @@ file(GLOB srcs
 	"date.cc"
 	"fileio.cc"
 	"mrtcalculator.cc"
-	"petcalculator.cc"
 	"vfcalculator.cc"
   "fractioncalculator.cc"
 )

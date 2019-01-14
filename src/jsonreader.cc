@@ -26,25 +26,6 @@ void JsonReader::JsonParser(const std::string &path, JsonStruct &jsonStruct) {
   jsonStruct.endTime = time->second.get_value<std::string>();
   time++;
   jsonStruct.timeStep = time->second.get_value<int>();
-  /*
-  auto measurements = pt.get_child("measurements");
-  configEntryToVector<double>(pt, "measurements.altitude", jsonStruct.altitude);
-  configEntryToVector<double>(pt, "measurements.airTemperature", jsonStruct.airTemperature);
-  configEntryToVector<double>(pt, "measurements.relativeHumidity", jsonStruct.relativeHumidity);
-  configEntryToVector<double>(pt, "measurements.windVelocity", jsonStruct.windVelocity);
-  configEntryToVector<double>(pt, "measurements.cloudCover", jsonStruct.cloudCover);
-
-  auto subject = pt.get_child("subject");
-  jsonStruct.height = subject.get<double>("height");
-  jsonStruct.weight = subject.get<double>("weight");
-  jsonStruct.age = subject.get<double>("age");
-  jsonStruct.male = subject.get<int>("male");
-  jsonStruct.clothing = subject.get<double>("clothing");
-  jsonStruct.activity = subject.get<double>("activity");
-  jsonStruct.standing = subject.get<int>("standing");
-
-  configEntryToVector<std::string>(pt, "tiles", jsonStruct.tiles);
-  */
 }
 
 template <typename T>

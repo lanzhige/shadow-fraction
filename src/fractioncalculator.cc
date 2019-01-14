@@ -79,4 +79,19 @@ double FractionCalculator::getSurfaceArea(const Point3d &x, const Point3d &y,
   return getE(X, Y, Z);
 }
 
+std::vector<double> FractionCalculator::getFraction(const unsigned char* seg, const float* depth) {
+  std::vector<double> res(13, 0.0);
+  for (int i = 0; i < 512; i++) {
+    for (int j = 0; j < 512; j++) {
+      int temp = static_cast<int>(depth[((511 - i) * 512 + j) * 4 + 3]);
+      /*if ((int)seg[i * 512 + j] == 1) {
+        res[1] += mask[i * 512 + j];
+      } else {*/
+      int type = (int)seg[i * 512 + j];
+      res[temp * 6 + type] += mask[i * 512 + j];
+    }
+  }
+  return res;
+}
+
 }

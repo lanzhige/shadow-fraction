@@ -30,6 +30,8 @@ class FractionCalculator {
 
 public:
   FractionCalculator(double width = 512, double height = 512);
+
+  std::vector<double> getFraction(const unsigned char* seg, const float* depth);
 private:
   double getLat(const Point3d &p);
   double getLon(const Point3d &p);

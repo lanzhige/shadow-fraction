@@ -57,15 +57,6 @@ namespace file {
 			segmented_data.push_back(dataPointer);
 			viewFactor.push_back({ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 });
 		}		
-#ifdef _DEBUG
-		fs::create_directories("./Debug_output");
-		fs::create_directories("./Debug_output/fisheye");
-		fs::create_directories("./Debug_output/nonshaded_fisheye");
-		fs::create_directories("./Debug_output/shaded_fisheye");
-		fs::create_directories("./Debug_output/accumulated_temperature");
-		debug_image_buffer = (unsigned char*)malloc(SEGMENTED_BIN_SIZE * 4 * sizeof(unsigned char));
-		ilInit();
-#endif // DEBUG
 	}
 
 	void FileIO::load() {
@@ -77,15 +68,6 @@ namespace file {
 		int gap_minute = endDate - startDate;
 		unsigned len = (endDate - startDate)/json->timeStep + 1;
 		std::cout << "total time steps: " << len << std::endl << std::endl;
-		if (len != json->altitude->size() 
-			|| len != json->airTemperature->size() 
-			|| len != json->relativeHumidity->size() 
-			|| len != json->windVelocity->size() 
-			|| len != json->cloudCover->size()) {
-			std::cout << "Incooperate length of meteorological data with time steps!\
- time steps: " << len << std::endl;
-			exit(1);
-		}
 		for (int i = 0; i < len; i++) {
 			temp.getDayOfYear();
 			calculate::Date *t = new calculate::Date(temp);
