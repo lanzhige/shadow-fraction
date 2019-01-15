@@ -1,7 +1,7 @@
 #include "fractioncalculator.h"
 
 #include <cmath>
-
+#include <iostream>
 namespace calculate {
 FractionCalculator::FractionCalculator(double width, double height) {
   this->width = width;
@@ -10,7 +10,7 @@ FractionCalculator::FractionCalculator(double width, double height) {
   double dv = 2 / height;
 
   mask.resize(width * height);
-
+  double sum = 0;
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
       double u = i / width * 2 - 1;
@@ -20,8 +20,10 @@ FractionCalculator::FractionCalculator(double width, double height) {
       double p1 = getSurfaceArea(corners[0], corners[1], corners[2]);
       double p2 = getSurfaceArea(corners[1], corners[2], corners[3]);
       mask[i * width + j] = (p1 + p2) / (M_PI * 4);
+      sum += mask[i * width + j];
     }
   }
+  std::cout << "mask sum: " << sum << std::endl;
 }
 
 double FractionCalculator::getLat(const Point3d &p) {

@@ -212,34 +212,15 @@ namespace file {
 		void dellocateBuffer(vector<unsigned char*> &buffer);
 
 		// column names of output .csv files
-		const std::string csv_col = "MapTile-x, MapTile-y, Latitude, Longitude, Year, Month, Day, Hours, Day of Year, Air Temperature,\
-	Relative Humidity,	Vapor Pressure, Wind Speed,	Sun Hours, Sun Visible,\
-	Gamma, Phi, Pressure at given Altitude(Atmospheric), Relative Optical Air Mass,\
-	Optical Thickness, Extra-Terrestrial Radiation, Direct Radiation, Global Radiation,\
-	Diffused Radiation,	Atmospheric Radiation, \
-	SurfaceTemperatureSky, SurfaceTemperatureTree, SurfaceTemperatureBuilding, SurfaceTemperatureImpervious, SurfaceTemperaturePervious, SurfaceTemperatureMovingObjects, LongWaveRadiationSky, LongWaveRadiationTree, LongWaveRadiationBuilding, LongWaveRadiationImpervious, LongWaveRadiationPervious, LongWaveRadiationMovingObjects, \
-	SVF_Up, TVF_Up,	BVF_Up,	IVF_Up, PVF_Up, MOVF_Up, \
-	SVF_Down, TVF_Down,	BVF_Down, IVF_Down,	PVF_Down, MOVF_Down, \
-	SVF_N, TVF_N, BVF_N, IVF_N,	PVF_N, MOVF_N, \
-	SVF_S, TVF_S, BVF_S, IVF_S, PVF_S, MOVF_S, \
-	SVF_E, TVF_E, BVF_E, IVF_E, PVF_E, MOVF_E, \
-	SVF_W, TVF_W, BVF_W, IVF_W,	PVF_W, MOVF_W, \
-	SVF_360, TVF_360, BVF_360, IVF_360, PVF_360, MOVF_360, SVF_MRT, TVF_MRT, IVF_MRT, BVF_MRT, PVF_MRT, MOVF_MRT, \
-    MRT_North, MRT_Down, MRT_Up, MRT_South, MRT_West, MRT_East, \
-	Mean Radiant Temperature(MRT), \
-	UTCI, PET, Core Temperature(C), Skin Temperature(C), Total Water Loss(g / h), Skin Wetting, Internal Heat(W), Radiation Balance(W), Convection(W), Water Vapor Diffusion(W), Welding Evaporation(W), Respiration(W), \
-	SD_TVF_Up, SD_BVF_Up,SD_IVF_Up,SD_PVF_Up,SD_MOVF_Up, \
-	SD_TVF_Down, SD_BVF_Down, SD_IVF_Down,	SD_PVF_Down, SD_MOVF_Down, \
-	SD_TVF_N, SD_BVF_N, SD_IVF_N, SD_PVF_N, SD_MOVF_N, \
-	SD_TVF_S, SD_BVF_S, SD_IVF_S, SD_PVF_S, SD_MOVF_S, \
-	SD_TVF_E, SD_BVF_E, SD_IVF_E, SD_PVF_E, SD_MOVF_E, \
-	SD_TVF_W, SD_BVF_W, SD_IVF_W, SD_PVF_W, SD_MOVF_W, \
-	NSD_TVF_Up, NSD_BVF_Up, NSD_IVF_Up, NSD_PVF_Up, NSD_MOVF_Up, \
-	NSD_TVF_Down, NSD_BVF_Down, NSD_IVF_Down, NSD_PVF_Down, NSD_MOVF_Down, \
-	NSD_TVF_N, NSD_BVF_N, NSD_IVF_N, NSD_PVF_N, NSD_MOVF_N, \
-	NSD_TVF_S, NSD_BVF_S, NSD_IVF_S, NSD_PVF_S, NSD_MOVF_S, \
-	NSD_TVF_E, NSD_BVF_E, NSD_IVF_E, NSD_PVF_E, NSD_MOVF_E, \
-	NSD_TVF_W, NSD_BVF_W, NSD_IVF_W, NSD_PVF_W, NSD_MOVF_W\n";
+		const std::string csv_col = "Tile-x, Tile-y, Latitude, Longitude, Year, Month, Day, Hours, Day of Year,\
+	Sun Hours, Sun Visible,\
+	Sky_E, Tree_E_Exposed, Building_E_Exposed, Impervious_E_Exposed, Pervious_E_Exposed, Moving_E_Exposed, Tree_E_Shaded, Building_E_Shaded, Impervious_E_Shaded, Pervious_E_Shaded, Moving_E_Shaded,\
+  Sky_W, Tree_W_Exposed, Building_W_Exposed, Impervious_W_Exposed, Pervious_W_Exposed, Moving_W_Exposed, Tree_W_Shaded, Building_W_Shaded, Impervious_W_Shaded, Pervious_W_Shaded, Moving_W_Shaded,\
+  Sky_Up, Tree_Up_Exposed, Building_Up_Exposed, Impervious_Up_Exposed, Pervious_Up_Exposed, Moving_Up_Exposed, Tree_Up_Shaded, Building_Up_Shaded, Impervious_Up_Shaded, Pervious_Up_Shaded, Moving_Up_Shaded,\
+  Sky_Down, Tree_Down_Exposed, Building_Down_Exposed, Impervious_Down_Exposed, Pervious_Down_Exposed, Moving_Down_Exposed, Tree_Down_Shaded, Building_Down_Shaded, Impervious_Down_Shaded, Pervious_Down_Shaded, Moving_Down_Shaded,\
+  Sky_N, Tree_N_Exposed, Building_N_Exposed, Impervious_N_Exposed, Pervious_N_Exposed, Moving_N_Exposed, Tree_N_Shaded, Building_N_Shaded, Impervious_N_Shaded, Pervious_N_Shaded, Moving_N_Shaded,\
+  Sky_S, Tree_S_Exposed, Building_S_Exposed, Impervious_S_Exposed, Pervious_S_Exposed, Moving_S_Exposed, Tree_S_Shaded, Building_S_Shaded, Impervious_S_Shaded, Pervious_S_Shaded, Moving_S_Shaded,\
+  \n";
 	};
 }
 

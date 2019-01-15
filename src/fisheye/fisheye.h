@@ -63,12 +63,12 @@ public:
 		"_270_0_seg.bin"  //west
 	};*/
 	const string bin_postfix[6] = {
-		"_90_0.bin",
-		"_270_0.bin",
-		"_0_90.bin",
-		"_0_270.bin",
-		"_0_0.bin",
-		"_180_0.bin"
+		"_90_0.bin",    //east
+		"_270_0.bin",   //west
+		"_0_90.bin",    //up
+		"_0_270.bin",   //down
+		"_0_0.bin",     //north
+		"_180_0.bin"    //south
 	};
 
 	std::string postfix[6] = {

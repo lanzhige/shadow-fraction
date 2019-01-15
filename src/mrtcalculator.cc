@@ -280,23 +280,29 @@ void MRTCalculator::calculate(Date &date, const std::vector<unsigned char *> &da
 	std::swap(res->at(3), res->at(5));
 	std::swap(res->at(4), res->at(5));
 
+  ss << geo.lat << "," << geo.lng << "," << date._year << "," << date._month << "," << date._day << "," << date._hour << "," << date.dayOfYear << ",";
+  ss << sunHours << "," << (int)sunVisible << ",";
+
+  double sum = 0;
 	for (int i = 0; i < 6; i++) {
     std::vector<double> fraction = fc->getFraction(seg_data[i], res->at(i));
     std::cout<< "direction: "<< i <<std::endl;
-    for (double j : fraction)
-      std::cout<<j<<" ";
-    std::cout<<std::endl;
-		//getSegShadow(seg_data[i], res->at(i), shaded_buffer[i], non_shaded_buffer[i], acc_tem_time[i]);
+    for (int j = 1; j < fraction.size(); j++) {
+      std::cout << fraction[j] << " ";
+      
+      if (j == 1) {
+        sum += fraction[j];
+        sum += fraction[7];
+        ss << fraction[j] << ",";
+      } else if (j != 7) {
+        sum += fraction[j];
+        ss << fraction[j] << ",";
+      }
+    }
+    std::cout<< " sum :" << sum << std::endl;
 	}
 
-	fisheye->getVF(shaded_buffer, shaded_fe_buffer, vfCalculator, shaded_vf);
-	fisheye->getVF(non_shaded_buffer, non_shaded_fe_buffer, vfCalculator, non_shaded_vf);
-
 	scSuf->deallocateSurfaceImages(res);
-
-	// generate output
-	ss << geo.lat << "," << geo.lng << "," << date._year << "," << date._month << "," << date._day << "," << date._hour << "," << date.dayOfYear << ",";
-
 	
 	ss << "\n";
 	*output += ss.str();

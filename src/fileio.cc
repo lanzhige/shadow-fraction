@@ -215,13 +215,6 @@ namespace file {
 		if (loadSegmentedBin(segmented_data, segDir)) return;
 		fisheye->getVF(segDir, fisheye_buffer, vfCalculator, viewFactor);
 
-#ifdef _DEBUG
-		for (int i = 0; i < 6; i++) {
-			//file::compress(fisheye_buffer[i], "./Debug_output/fisheye/" + latLon + postfix[i], 512 * 512, Z_DEFAULT_COMPRESSION);
-			saveImage(fisheye_buffer[i], "./Debug_output/fisheye/" + latLon + debug_postfix[i], 512 * 512);
-		}
-#endif //DEBUG
-
 		std::string tile = inpath.string().substr(
 			inpath.parent_path().parent_path().string().length() + 1,
 			inpath.parent_path().string().length() - inpath.parent_path().parent_path().string().length() - 1
@@ -248,11 +241,6 @@ namespace file {
 		mrt.pre_day = -1;
 
 		for (int j = 0; j < output.size(); j++) {
-			geo.altitude = json->altitude->at(j);
-			geo.airTemperature = json->airTemperature->at(j);
-			geo.windVelocity = json->windVelocity->at(j);
-			geo.cloudCover = json->cloudCover->at(j);
-			geo.relativeHumidity = json->relativeHumidity->at(j);
 
 			*(output[j].second) += tile + ",";
 			mrt.calculate(*(output[j].first), fisheye_buffer, geo, viewFactor[0], output[j].second, viewFactor, json, depth_data, fisheye, vfCalculator, segmented_data);
