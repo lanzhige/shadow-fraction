@@ -199,6 +199,8 @@ namespace file {
 			"_180_0.bin"
 		};
 
+    std::clock_t timer;
+
 		// output buffer
 		std::vector<std::pair<calculate::Date *, std::string *>> output;
 		calculate::VFCalculator vfCalculator;
@@ -212,7 +214,7 @@ namespace file {
 		void dellocateBuffer(vector<unsigned char*> &buffer);
 
 		// column names of output .csv files
-		const std::string csv_col = "Tile-x, Tile-y, Latitude, Longitude, Year, Month, Day, Hours, Day of Year,\
+		const std::string csv_col = "Tile-x, Tile-y, Latitude, Longitude, Date, Day of Year,\
 	Sun Hours, Sun Visible,\
 	Sky_E, Tree_E_Exposed, Building_E_Exposed, Impervious_E_Exposed, Pervious_E_Exposed, Moving_E_Exposed, Tree_E_Shaded, Building_E_Shaded, Impervious_E_Shaded, Pervious_E_Shaded, Moving_E_Shaded,\
   Sky_W, Tree_W_Exposed, Building_W_Exposed, Impervious_W_Exposed, Pervious_W_Exposed, Moving_W_Exposed, Tree_W_Shaded, Building_W_Shaded, Impervious_W_Shaded, Pervious_W_Shaded, Moving_W_Shaded,\
@@ -220,6 +222,7 @@ namespace file {
   Sky_Down, Tree_Down_Exposed, Building_Down_Exposed, Impervious_Down_Exposed, Pervious_Down_Exposed, Moving_Down_Exposed, Tree_Down_Shaded, Building_Down_Shaded, Impervious_Down_Shaded, Pervious_Down_Shaded, Moving_Down_Shaded,\
   Sky_N, Tree_N_Exposed, Building_N_Exposed, Impervious_N_Exposed, Pervious_N_Exposed, Moving_N_Exposed, Tree_N_Shaded, Building_N_Shaded, Impervious_N_Shaded, Pervious_N_Shaded, Moving_N_Shaded,\
   Sky_S, Tree_S_Exposed, Building_S_Exposed, Impervious_S_Exposed, Pervious_S_Exposed, Moving_S_Exposed, Tree_S_Shaded, Building_S_Shaded, Impervious_S_Shaded, Pervious_S_Shaded, Moving_S_Shaded,\
+  Sky_Total, Shadow_Total, Exposed_Total\
   \n";
 	};
 }

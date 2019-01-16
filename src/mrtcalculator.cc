@@ -280,27 +280,32 @@ void MRTCalculator::calculate(Date &date, const std::vector<unsigned char *> &da
 	std::swap(res->at(3), res->at(5));
 	std::swap(res->at(4), res->at(5));
 
-  ss << geo.lat << "," << geo.lng << "," << date._year << "," << date._month << "," << date._day << "," << date._hour << "," << date.dayOfYear << ",";
+  ss << geo.lat << "," << geo.lng << "," << date.to_utc() << "," << date.dayOfYear << ",";
   ss << sunHours << "," << (int)sunVisible << ",";
 
-  double sum = 0;
+  double sum = 0, sky = 0, shadow = 0, exposed = 0;
 	for (int i = 0; i < 6; i++) {
     std::vector<double> fraction = fc->getFraction(seg_data[i], res->at(i));
-    std::cout<< "direction: "<< i <<std::endl;
+    //std::cout<< "direction: "<< i <<std::endl;
     for (int j = 1; j < fraction.size(); j++) {
-      std::cout << fraction[j] << " ";
+      //std::cout << fraction[j] << " ";
       
       if (j == 1) {
         sum += fraction[j];
         sum += fraction[7];
-        ss << fraction[j] << ",";
+        ss << fraction[j] + fraction[7] << ",";
+        sky += fraction[j] + fraction[7];
       } else if (j != 7) {
         sum += fraction[j];
         ss << fraction[j] << ",";
+        if (j < 7) exposed += fraction[j];
+        else shadow += fraction[j];
       }
     }
-    std::cout<< " sum :" << sum << std::endl;
+    //std::cout<< " sum :" << sum << std::endl;
 	}
+
+  ss << sky << "," << shadow << "," << exposed << ",";
 
 	scSuf->deallocateSurfaceImages(res);
 	

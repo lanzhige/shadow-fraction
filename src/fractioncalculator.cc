@@ -23,7 +23,7 @@ FractionCalculator::FractionCalculator(double width, double height) {
       sum += mask[i * width + j];
     }
   }
-  std::cout << "mask sum: " << sum << std::endl;
+  //std::cout << "mask sum: " << sum << std::endl;
 }
 
 double FractionCalculator::getLat(const Point3d &p) {

@@ -27,6 +27,15 @@ namespace calculate {
 		} else {
 			std::cout << "unresolved date format: " << utc << std::endl;
 		}
+    if (_tzd[0] == '-') {
+      _hour -= std::stoi(_tzd);
+      _minute += std::stoi(_tzd.substr(4));
+      update();
+    } else {
+      _hour -= std::stoi(_tzd);
+      _minute -= std::stoi(_tzd.substr(4));
+      downdate();
+    }
 		getDayOfYear();
 	}
 
@@ -259,6 +268,16 @@ namespace calculate {
 		std::stringstream ss;
 		ss.fill('0');
 		_tzd[3] = '-';
+    Date temp(*this);
+    if (_tzd[0] == '+') {
+      _hour += std::stoi(_tzd);
+      _minute += std::stoi(_tzd.substr(4));
+      update();
+    } else {
+      _hour += std::stoi(_tzd);
+      _minute -= std::stoi(_tzd.substr(4));
+      downdate();
+    }
 		ss << std::setw(4) << _year << "-"
 			<< std::setw(2) << _month << "-"
 			<< std::setw(2) << _day << "T"
@@ -266,6 +285,32 @@ namespace calculate {
 			<< std::setw(2) << _minute
 			<< _tzd;
 		str = ss.str();
+    *this = temp;
 		return str;
 	}
+
+  std::string Date::to_utc() {
+    std::stringstream ss;
+    ss.fill('0');
+    _tzd[3] = ':';
+    Date temp(*this);
+    if (_tzd[0] == '+') {
+      _hour += std::stoi(_tzd);
+      _minute += std::stoi(_tzd.substr(4));
+      update();
+    } else {
+      _hour += std::stoi(_tzd);
+      _minute -= std::stoi(_tzd.substr(4));
+      downdate();
+    }
+    ss << std::setw(4) << _year << "-"
+      << std::setw(2) << _month << "-"
+      << std::setw(2) << _day << "T"
+      << std::setw(2) << _hour << ":"
+      << std::setw(2) << _minute
+      << _tzd;
+    str = ss.str();
+    *this = temp;
+    return str;
+  }
 }

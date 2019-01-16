@@ -1,9 +1,9 @@
 {
-	"iRoot": "C:/workplace/calculateMRT/build/tempe",
+	"iRoot": "C:/test",
 	"oRoot": "C:/workplace/calculateMRT/build/tempe_out",
 	"time": [
-		"2016-06-20T21:00+01:00",
-		"2016-06-20T23:00+01:00",
+		"2016-06-20T13:00-07:00",
+		"2016-06-20T15:00-07:00",
 		30
 	]
 }

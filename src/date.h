@@ -48,6 +48,7 @@ public:
 
 
 	std::string to_string();
+  std::string to_utc();
 
 	int dayOfYear;
 

@@ -56,7 +56,9 @@ namespace file {
 			dataPointer = (unsigned char*)malloc(SEGMENTED_BIN_SIZE * sizeof(unsigned char));
 			segmented_data.push_back(dataPointer);
 			viewFactor.push_back({ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 });
-		}		
+		}
+
+    timer = std::clock();
 	}
 
 	void FileIO::load() {
@@ -68,13 +70,19 @@ namespace file {
 		int gap_minute = endDate - startDate;
 		unsigned len = (endDate - startDate)/json->timeStep + 1;
 		std::cout << "total time steps: " << len << std::endl << std::endl;
+    std::ofstream myfile;
 		for (int i = 0; i < len; i++) {
 			temp.getDayOfYear();
 			calculate::Date *t = new calculate::Date(temp);
-			t->to_string();
+			std::string outname = outputDir + "\\" + t->to_string();
+      fs::create_directories(outname);
+      outname += "\\result.csv";
+      myfile.open(outname, std::ofstream::out);
+      myfile << csv_col;
 			std::string *s = new string;
 			output.push_back({ t, s });
 			temp += json->timeStep;
+      myfile.close();
 		}
 
 		//readingDir = inputDir;
@@ -88,17 +96,19 @@ namespace file {
 		std::ofstream myfile;
 
 		for (int i = 0; i < output.size(); i++) {
-			std::string outname = outputDir + "\\" + output[i].first->str + writingDir;
+			std::string outname = outputDir + "\\" + output[i].first->to_string();// + writingDir;
 			fs::create_directories(outname);
 			outname += "\\result.csv";
-			std::cout << outname << std::endl;
-			myfile.open(outname, std::ofstream::out);
-			myfile << csv_col;
+			myfile.open(outname, std::ofstream::out | std::ofstream::app);
+			//myfile << csv_col;
 			myfile << *(output[i].second);
 			*(output[i].second) = "";
 
 			myfile.close();
 		}
+    double duration = (std::clock() - timer) / (double)CLOCKS_PER_SEC;
+    timer = std::clock();
+    std::cout << "finished processing map tile: " << writingDir << ", time used: " << duration << " seconds." << std::endl;
 	}
 
 #ifdef _DEBUG
